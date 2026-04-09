@@ -1,53 +1,46 @@
-# 📚 Student Management System
+# 🎓 Student Management System
 
 ## 📌 Project Description
 
-The **Student Management System** is a full-stack web application designed to manage student records efficiently. It allows administrators to perform operations such as adding, updating, deleting, and viewing student data. The system reduces manual work and ensures data accuracy.
+The **Student Management System** is a full-stack web application developed to manage student records efficiently. It allows administrators to perform operations such as adding, updating, deleting, and viewing student data with secure authentication.
 
 ---
 
-## 🎯 Objectives
+## 🚀 Technologies Used
 
-* To digitize student record management
-* To provide an easy-to-use interface for managing data
-* To implement secure authentication and authorization
-* To perform CRUD operations efficiently
+### 🔹 Frontend
 
----
-
-## 🚀 Features
-
-* 🔐 User Authentication (Login/Register using JWT)
-* 👨‍🎓 Add New Students
-* 📋 View Student List
-* ✏️ Update Student Details
-* ❌ Delete Student Records
-* 🛡️ Protected Routes (Only authorized users can access)
-* 📱 Responsive UI
-
----
-
-## 🏗️ Tech Stack
-
-### Frontend:
-
-* React JS
+* React.js
 * React Router
 * CSS / Bootstrap
 
-### Backend:
+### 🔹 Backend
 
 * Node.js
 * Express.js
 
-### Database:
+### 🔹 Database
 
-* MongoDB
+* MySQL
 
-### Security:
+### 🔹 Authentication & Security
 
 * JWT (JSON Web Token)
 * bcrypt (Password Hashing)
+
+---
+
+## ✨ Features
+
+* 🔐 User Registration & Login
+* 🔑 JWT-based Authentication
+* 🔒 Password Encryption using bcrypt
+* 👨‍🎓 Add Student
+* 📋 View Student List
+* ✏️ Update Student Details
+* ❌ Delete Student
+* 🔁 Full CRUD Operations
+* 🛡️ Protected Routes
 
 ---
 
@@ -55,19 +48,8 @@ The **Student Management System** is a full-stack web application designed to ma
 
 ```
 student-management-system/
-│
-├── client/                # Frontend (React)
-│   ├── src/
-│   ├── package.json
-│
-├── server/                # Backend (Node.js + Express)
-│   ├── routes/
-│   ├── controllers/
-│   ├── models/
-│   ├── middleware/
-│   ├── config/
-│   ├── server.js
-│
+├── client/        # React frontend
+├── server/        # Node.js backend
 ├── README.md
 ```
 
@@ -75,97 +57,88 @@ student-management-system/
 
 ## ⚙️ Installation & Setup
 
-### 🔹 Step 1: Clone Repository
+### 🔹 1. Clone Repository
 
 ```
-git clone <your-repo-link>
+git clone https://github.com/arunbusa06/student-management-system.git
 cd student-management-system
 ```
 
 ---
 
-### 🔹 Step 2: Install Frontend Dependencies
-
-```
-cd client
-npm install
-```
-
----
-
-### 🔹 Step 3: Install Backend Dependencies
-
-```
-cd ../server
-npm install
-```
-
----
-
-### 🔹 Step 4: Setup Environment Variables
-
-Create a `.env` file in the `server` folder and add:
-
-```
-PORT=5000
-MONGO_URI=your_database_connection_string
-JWT_SECRET=your_secret_key
-```
-
----
-
-### 🔹 Step 5: Run the Project
-
-#### Start Backend:
+### 🔹 2. Setup Backend
 
 ```
 cd server
+npm install
 npm start
 ```
 
-#### Start Frontend:
+---
+
+### 🔹 3. Setup Frontend
 
 ```
 cd client
+npm install
 npm start
+```
+
+---
+
+## 🌐 Running the Project
+
+* Frontend: http://localhost:3000
+* Backend: http://localhost:5000
+
+---
+
+## 🗄️ Database Configuration (MySQL)
+
+Create a MySQL database and update your `.env` file:
+
+```
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=student_db
+JWT_SECRET=your_secret_key
+PORT=5000
 ```
 
 ---
 
 ## 🔐 Authentication Flow
 
-1. User registers/logs in
-2. Password is hashed using bcrypt
-3. JWT token is generated
-4. Token is used to access protected routes
+1. User registers → password hashed using bcrypt
+2. User logs in → JWT token generated
+3. Token used for accessing protected routes
+4. Unauthorized users are restricted
 
 ---
 
-## 📦 Deployment (Optional)
+## 📸 Screenshots (Optional)
 
-* Frontend: Vercel / Netlify
-* Backend: Render / Railway
-* Database: MongoDB Atlas
+(Add screenshots of your UI here for better presentation)
 
 ---
 
-## 🧠 Future Enhancements
+## 📌 Future Improvements
 
-* Add role-based dashboards
-* Export student data (PDF/Excel)
 * Add search & filter functionality
-* Improve UI/UX design
+* Improve UI/UX
+* Role-based dashboard
+* Deployment on cloud
 
 ---
 
 ## 👨‍💻 Author
 
-**Name:** Arun Busa
-**Course:** B.Tech (2nd Year)
-**University:** Marwadi University
+**Arun Busa**
+GitHub: https://github.com/arunbusa06
 
 ---
 
-## 📜 License
+## 📄 License
 
-This project is for educational purposes only.
+This project is for educational purposes.
