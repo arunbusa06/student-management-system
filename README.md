@@ -1,6 +1,6 @@
 # 🎓 Student Management System
 
-A comprehensive Full-Stack web application designed for educational institutions to manage student records efficiently. Built with the **MERN** (MySQL, Express, React, Node) architecture, featuring secure authentication and a modern administrative dashboard.
+A comprehensive Full-Stack web application designed for educational institutions to manage student records efficiently. Built with the Full Stack (React, Node.js, Express, MySQL) architecture, featuring secure authentication and a modern administrative dashboard.
 
 ---
 
