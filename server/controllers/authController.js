@@ -1,32 +1,54 @@
-const userModel = require("../models/userModel");
-const { hashPassword, comparePassword } = require("../utils/hashPassword");
-const generateToken = require("../utils/generateToken");
+const db = require("../config/db");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
+// REGISTER
 exports.register = async (req, res) => {
   const { name, email, password } = req.body;
 
-  const hashed = await hashPassword(password);
+  try {
+    // hash password
+    const hashed = await bcrypt.hash(password, 10);
 
-  userModel.createUser(name, email, hashed, "user", (err) => {
-    if (err) return res.status(500).json(err);
-    res.json({ message: "Registered" });
-  });
+    const sql = "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, 'user')";
+
+    db.query(sql, [name, email, hashed], (err, result) => {
+      if (err) return res.status(500).json(err);
+
+      res.json({ message: "User registered successfully" });
+    });
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
 };
 
+// LOGIN
 exports.login = (req, res) => {
   const { email, password } = req.body;
 
-  userModel.findUserByEmail(email, async (err, result) => {
-    if (result.length === 0)
-      return res.status(400).json("User not found");
+  const sql = "SELECT * FROM users WHERE email = ?";
+
+  db.query(sql, [email], async (err, result) => {
+    if (err) return res.status(500).json(err);
+
+    if (result.length === 0) {
+      return res.status(400).json({ message: "User not found" });
+    }
 
     const user = result[0];
 
-    const match = await comparePassword(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password);
 
-    if (!match) return res.status(400).json("Wrong password");
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid password" });
+    }
 
-    const token = generateToken(user);
+    const token = jwt.sign(
+      { id: user.id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
 
     res.json({ token });
   });
