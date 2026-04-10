@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://student-backend-e4fq.onrender.com/api"
+  baseURL: process.env.REACT_APP_API_URL || "https://student-backend-e4fq.onrender.com/api"
 });
 
 // Attach token automatically

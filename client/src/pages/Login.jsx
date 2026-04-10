@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../utils/api";
 
 export default function Login() {
@@ -26,6 +27,9 @@ export default function Login() {
       <input placeholder="Email" onChange={e => setData({...data,email:e.target.value})}/>
       <input placeholder="Password" type="password" onChange={e => setData({...data,password:e.target.value})}/>
       <button>Login</button>
+      <div style={{ marginTop: "1rem" }}>
+        <Link to="/register">Don't have an account? Register here</Link>
+      </div>
     </form>
   );
 }
