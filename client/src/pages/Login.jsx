@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import api from "../utils/api";
 
 export default function Login() {
-  const [data, setData] = useState({ email: "", password: "" });
-  const navigate = useNavigate();
+  const [data, setData] = useState({
+    email: "",
+    password: ""
+  });
 
-  const submit = async (e) => {
+  const login = async (e) => {
     e.preventDefault();
 
     try {
@@ -14,34 +15,26 @@ export default function Login() {
 
       localStorage.setItem("token", res.data.token);
 
-      alert("Login Success");
-
-      navigate("/dashboard");
-
+      alert("Login successful");
+      window.location.href = "/students";
     } catch (err) {
-      alert(err.response?.data || "Login Failed");
+      console.error(err);
+      alert("Login failed");
     }
   };
 
   return (
-    <form onSubmit={submit}>
-      <input 
+    <form onSubmit={login}>
+      <input
         placeholder="Email"
-        onChange={e => setData({ ...data, email: e.target.value })}
+        onChange={(e) => setData({ ...data, email: e.target.value })}
       />
-
-      <input 
-        type="password"
+      <input
         placeholder="Password"
-        onChange={e => setData({ ...data, password: e.target.value })}
+        type="password"
+        onChange={(e) => setData({ ...data, password: e.target.value })}
       />
-
       <button>Login</button>
-
-      
-      <p>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
     </form>
   );
 }

@@ -4,22 +4,23 @@ require("dotenv").config();
 
 const app = express();
 
-// Middleware
+// ✅ Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// ✅ Routes
 const authRoutes = require("./routes/authRoutes");
 const studentRoutes = require("./routes/studentRoutes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/students", studentRoutes);
 
-// Test route
+// ✅ Test route
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
+// ✅ PORT FIX
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
