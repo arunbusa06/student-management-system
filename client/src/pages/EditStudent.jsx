@@ -18,20 +18,15 @@ export default function EditStudent() {
       .then(res => {
         const student = res.data.find(s => s.id === Number(id));
         if (student) setData(student);
-      })
-      .catch(err => console.error(err));
+      });
   }, [id]);
 
   const update = async (e) => {
     e.preventDefault();
 
-    try {
-      await api.put(`/students/${id}`, data);
-      alert("Updated Successfully");
-      navigate("/students");
-    } catch (err) {
-      alert("Update failed");
-    }
+    await api.put(`/students/${id}`, data);
+    alert("Updated");
+    navigate("/students");
   };
 
   return (
