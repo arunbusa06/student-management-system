@@ -15,7 +15,7 @@ export default function Login() {
       const res = await api.post("/auth/login", data);
       localStorage.setItem("token", res.data.token);
       alert("Login successful");
-      window.location.href = "/students";
+      window.location.href = "/dashboard";
     } catch (err) {
       alert("Login failed");
     }

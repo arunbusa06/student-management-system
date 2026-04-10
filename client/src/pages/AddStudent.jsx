@@ -1,6 +1,8 @@
 import { useState } from "react";
 import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 
 export default function AddStudent() {
   const navigate = useNavigate();
@@ -21,13 +23,21 @@ export default function AddStudent() {
   };
 
   return (
-    <form onSubmit={add}>
-      <h2>Add Student</h2>
-      <input placeholder="Name" onChange={e=>setData({...data,name:e.target.value})}/>
-      <input placeholder="Email" onChange={e=>setData({...data,email:e.target.value})}/>
-      <input placeholder="Course" onChange={e=>setData({...data,course:e.target.value})}/>
-      <input placeholder="Phone" onChange={e=>setData({...data,phone:e.target.value})}/>
-      <button>Add</button>
-    </form>
+    <>
+      <Navbar />
+      <div className="container">
+        <Sidebar />
+        <div className="content">
+          <form onSubmit={add}>
+            <h2>Add Student</h2>
+            <input placeholder="Name" onChange={e=>setData({...data,name:e.target.value})}/>
+            <input placeholder="Email" onChange={e=>setData({...data,email:e.target.value})}/>
+            <input placeholder="Course" onChange={e=>setData({...data,course:e.target.value})}/>
+            <input placeholder="Phone" onChange={e=>setData({...data,phone:e.target.value})}/>
+            <button>Add</button>
+          </form>
+        </div>
+      </div>
+    </>
   );
 }

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../utils/api";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 
 export default function EditStudent() {
   const { id } = useParams();
@@ -30,12 +32,21 @@ export default function EditStudent() {
   };
 
   return (
-    <form onSubmit={update}>
-      <input value={data.name} onChange={e=>setData({...data,name:e.target.value})}/>
-      <input value={data.email} onChange={e=>setData({...data,email:e.target.value})}/>
-      <input value={data.course} onChange={e=>setData({...data,course:e.target.value})}/>
-      <input value={data.phone} onChange={e=>setData({...data,phone:e.target.value})}/>
-      <button>Update</button>
-    </form>
+    <>
+      <Navbar />
+      <div className="container">
+        <Sidebar />
+        <div className="content">
+          <form onSubmit={update}>
+            <h2>Edit Student</h2>
+            <input value={data.name} onChange={e=>setData({...data,name:e.target.value})}/>
+            <input value={data.email} onChange={e=>setData({...data,email:e.target.value})}/>
+            <input value={data.course} onChange={e=>setData({...data,course:e.target.value})}/>
+            <input value={data.phone} onChange={e=>setData({...data,phone:e.target.value})}/>
+            <button className="edit">Update</button>
+          </form>
+        </div>
+      </div>
+    </>
   );
 }
